@@ -1,0 +1,53 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>message.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../../static/jquery/jquery.min.js"></script>
+	
+  </head>
+  	
+  <body>
+  <div class="demo">
+      <form>
+    <ul id="list">  
+   <li><label><input type="checkbox" value="${messageVO}">全部选择</label></li>
+   <li><label><input type="checkbox" value="${messageVO.userByTousername}">adminCEO</label></li>
+	</ul>
+	<input type="checkbox" id="all">  
+	</div>
+	<label>内容：</label>
+	<input type="text"name="messageVO.content" style="width:300px;height:300px"></br>
+	<input type="submit" name="submit" value="发送" style="width:50px;height:50px;color:red">
+	<input type="button" value="取消" style="width:50px; height:50px;color: blue ">
+  </form>
+  </body>
+  <script type="text/javascript">
+  	$(function(){
+		$("#all").click(function(){
+			if(this.checked){
+				$("#list input[type=checkbox]").prop("checked",true)
+			}else{
+				$("#list input[type=checkbox]").prop("checked",false)
+			}
+		})
+        $("input[name='submit']").on("click", function () {
+                $.messager.alert("信息", "发送成功", "", function () {
+                    parent.$("#topWindow").window("close");
+                })
+        })
+        $("input[name='button']").on("click", function () {
+            parent.$("#topWindow").window("close");
+        })
+  	})
+  </script>
+</html>  
+
+
